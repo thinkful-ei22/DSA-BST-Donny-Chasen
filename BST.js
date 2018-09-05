@@ -215,3 +215,62 @@ function findHeight(node){
     ///return max of bigger left aor right 
   }
 }
+
+
+function isBST(node){
+
+//first check if the left value is less than the value of the current node
+//check the right value to see if it's greather than the the value of the current node
+//if not true, then return false
+  if(node ===null){
+    return true;
+  }
+
+  if(node.left !==null && node.key < node.left.key){
+    return false;
+  }
+
+  if(node.right !==null && node.key > node.right.key ){
+    return false;
+  }
+
+  return isBST(node.left) && isBST(node.right);
+
+}
+
+
+console.log('IS BST',isBST(dummyBST));
+
+
+//THIRD LARGEST NODE
+
+//the largest value is the most right
+
+//check left of the largest first
+
+//check left children if they exist
+
+//check parent / check if our parent has left child
+
+//if it has left child, check the child that is the most right
+
+//if the parent doesnt have a child, go to the parents parent
+
+
+function thirdLargest(node){
+
+  
+
+  while (node.right !== null){
+    node = node.right;
+  }
+
+ const biggestNode = node;
+
+ return biggestNode;
+
+
+}
+
+
+console.log('THIRD LARGEST',thirdLargest(dummyBST));
