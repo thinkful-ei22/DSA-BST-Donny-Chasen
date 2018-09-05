@@ -257,20 +257,32 @@ console.log('IS BST',isBST(dummyBST));
 //if the parent doesnt have a child, go to the parents parent
 
 
-function thirdLargest(node){
-
-  
-
-  while (node.right !== null){
-    node = node.right;
+const nthLargest = (tree, state) => {
+  console.log(state.n);
+  if (tree.right) {
+    nthLargest(tree.right, state);
   }
+  --state.n;
+  if (!state.n) { 
+    state.result = tree.key;
+    return;
+  }
+  if (tree.left) {
+    nthLargest(tree.left, state);
+  } 
+}; 
 
- const biggestNode = node;
+const thirdLargest = (tree) => {
+  if (!tree.key) {
+    return null;
+  }
+  let state = {n: 3, result: null};
+  nthLargest(tree, state);
+  return state.result;
+};
 
- return biggestNode;
 
 
-}
 
 
 console.log('THIRD LARGEST',thirdLargest(dummyBST));
