@@ -196,3 +196,22 @@ dummyBST.insert(7);
 
 
 // console.log(BSTheight(dummyBST));
+
+
+function findHeight(node){
+  console.log(node);
+  if(node.key === null){
+    return 0;
+  }
+  else if(node.right === null && node.left === null){
+    return 1; //maybe -1 if height at root is zero
+  }else if(node.right === null){
+    return 1+ findHeight(node.left);
+  }else if (node.left === null){
+    return 1+ findHeight(node.right);
+  }
+  else{
+    return 1+  Math.max(findHeight(node.right), findHeight(node.left));
+    ///return max of bigger left aor right 
+  }
+}
